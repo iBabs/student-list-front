@@ -1,0 +1,41 @@
+/* Table takes full width */
+.st-inform {
+    width: 100%;
+    border-collapse: collapse;
+    border-bottom: solid 3px #d8f67c;
+  }
+  
+  /* Alternating row colors */
+  .st-inform tbody tr:nth-child(even) {
+    background-color: antiquewhite; 
+  }
+  .st-inform thead{
+    background-color: #d8f67c;
+  }
+  /* Borders for cells */
+  .st-inform th,
+  .st-inform td {
+    border: 1px solid #ccc; 
+    padding: 5px; 
+  }
+  a{
+    padding: 0;
+    margin: 0;
+    background: transparent !important;
+  }
+  .btn-update{
+    background-color: #d8f67c;
+  }
+  .btn-view{
+    background-color: #57e1bc;
+  }
+  .btn-delete{
+    background-color: #e84848;
+  }
+  .btn{
+    padding: 4px 6px;
+    border: solid 1px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  

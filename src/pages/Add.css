@@ -1,0 +1,21 @@
+
+input{
+    padding: 10px 15px;
+    width: auto;
+    border-radius: 5px;
+    border: solid 1px grey;
+    outline: none;
+    
+}
+.submit{
+    width: 100%;
+    transition: all 400ms ease-in;
+    cursor: pointer;
+}
+.submit:hover{
+    background-color: black;
+    color: wheat;
+}
+select{
+    padding: 7px 15px;
+}

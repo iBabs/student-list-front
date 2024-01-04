@@ -1,0 +1,9 @@
+.detailed {
+    min-height: 75svh;
+    min-width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    box-shadow: 0 0 15px grey;
+    margin: 2rem;
+}

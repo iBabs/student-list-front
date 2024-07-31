@@ -3,19 +3,22 @@ import axios from "axios";
 import "./Home.css";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import studentUrl from "./urls";
 
 const Home = () => {
   const [data, setData] = useState([]);
+  const stuuu = `${studentUrl}/students`
+  // "https://students-details.vercel.app/students"
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://students-details.vercel.app/users");
+        const response = await axios.get(stuuu);
         if (response.status === 200) {
           setData(response.data);
         }
       } catch (error) {
-        console.log(error);
+        console.log(error.message);
       }
     };
     fetchData();
@@ -23,7 +26,7 @@ const Home = () => {
   const deleteUser = async (id) => {
     if (window.confirm("You want to delete user?")) {
       try {
-        const response = await axios.delete(`https://students-details.vercel.app/user/${id}`);
+        const response = await axios.delete(`${studentUrl}/student/${id}`);
         if (response.status === 200) {
           toast.success(response.data, { theme: "colored" });
         } else {
@@ -50,7 +53,7 @@ const Home = () => {
           </tr>
         </thead>
         <tbody>
-          {data.length ? (
+           {data.length ? (
             data.map((item, index) => (
               <tr key={index}>
                 <th scope="row">{index + 1}</th>

@@ -3,6 +3,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import './Add.css'
+import studentUrl from "./urls";
 
 const initialState = {
   name: "",
@@ -21,7 +22,7 @@ function AddUser() {
     setInitState({ ...initState, [name]: value });
   };
   const adStudent = async (data) => {
-    const res = await axios.post("https://students-details.vercel.app/user", data);
+    const res = await axios.post(`${studentUrl}/student`, data);
     if (res.status === 200 || res.status === 201) {
       toast.success("User created", {theme: 'colored'});
     } else {

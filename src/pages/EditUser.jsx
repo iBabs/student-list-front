@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
+import studentUrl from "./urls";
 
 const initialState = {
   name: "",
@@ -21,7 +22,7 @@ function EditUser() {
   }, [id]);
 
   const getSingleUser = async (id) => {
-    const response = await axios.get(`https://students-details.vercel.app/user/${id}`);
+    const response = await axios.get(`${studentUrl}/student/${id}`);
     if (response.status === 200) {
       setInitState({ ...response.data });
       
@@ -36,7 +37,7 @@ function EditUser() {
   };
 
   const adStudent = async (data) => {
-    const res = await axios.post(`https://students-details.vercel.app/user`, data);
+    const res = await axios.post(`${studentUrl}/student`, data);
     if (res.status === 200) {
       toast.success(res.data, { theme: "colored" });
     } else {
@@ -44,7 +45,7 @@ function EditUser() {
     }
   };
   const updateUser = async (data, id) => {
-    const res = await axios.put(`https://students-details.vercel.app/user/${id}`, data);
+    const res = await axios.put(`${studentUrl}/student/${id}`, data);
     if (res.status === 200) {
       toast.success('User updated', { theme: "colored" });
     } else {

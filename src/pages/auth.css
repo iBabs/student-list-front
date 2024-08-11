@@ -1,0 +1,92 @@
+.contain {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contain form {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.inp-cont {
+    margin: 10px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.inp-cont label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.inp-cont input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+}
+
+.drop {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    background-color: #cc05f4;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease-in;
+}
+
+.drop:hover {
+    background-color: #a400d0;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    border: solid 1px red;
+}
+
+.loading {
+    font-size: large;
+    animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.password {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 5px
+}
+.password input {
+    border: none;
+    outline: none;
+    width: 100%;
+}

@@ -4,6 +4,7 @@ import "./Home.css";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import studentUrl from "./urls";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -22,7 +23,7 @@ const Home = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [stuuu]);
   const deleteUser = async (id) => {
     if (window.confirm("You want to delete user?")) {
       try {
@@ -33,7 +34,8 @@ const Home = () => {
           toast.error("Something went wrong", { theme: "colored" });
         }
       } catch (err) {
-        toast.error("User not found", { theme: "colored" });
+        // console.log(err);
+        toast.error(err.response.data.error, { theme: "colored" });
       }
     }
   };
@@ -73,7 +75,7 @@ const Home = () => {
                       deleteUser(item._id);
                     }}
                   >
-                    Delete
+                    <RiDeleteBin6Line/>
                   </button>
                 </td>
               </tr>

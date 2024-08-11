@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import "./View.css";
 import studentUrl from "./urls";
+// import Modal from "react-modal";
 
 function View() {
   const [data, setData] = useState({});
@@ -12,6 +13,7 @@ function View() {
   const { id } = useParams();
   const [createdBy, setCreatedBy] = useState("");
   const [user, setUser] = useState({});
+  // const [modalIsOpen, setModalIsOpen] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,7 +37,7 @@ function View() {
         if (response.status === 200) {
           setUser(response.data);
         }
-        console.log(user);
+        // console.log(user);
       } catch (error) {
         toast.error("User details not found", { theme: "colored" });
         setError(true);
@@ -43,7 +45,7 @@ function View() {
     };
     fetchData();
     createdBy&&getUser()
-  }, [id]);
+  }, [id, user, createdBy, data.createdBy]);
   if (error) {
     return (
       <div>
@@ -55,6 +57,7 @@ function View() {
     );
   }
   return (
+    
     <div
       style={{
         display: "flex",
@@ -80,14 +83,24 @@ function View() {
         >
           <div>View</div>
           <hr />
-          <img src={`http://localhost:4190/${data.profile}`} alt={data.name} width={200} />
+          <img src={`http://localhost:4190/${data.profile}`} alt={data.name} width={200}
+          style={{
+            height: "200px",
+            width: "200px",
+            borderRadius: "50%",
+            objectFit: "cover",
+            margin: "auto",
+            boxShadow: "0 0 10px 5px rgba(0,0,0,0.3)",
+
+          }}
+          />
           <p>ID: {data && data._id}</p>
           <h2>Name: {data && data.name}</h2>
           <p>email: {data && data.email}</p>
           <p>level: {data && data.level}</p>
           <p> Created: {data && data.createdAt}</p>
           <p> Last Updated: {data && data.updatedAt}</p>
-          <p> Created by: {createdBy}</p>
+          {createdBy?<p> Created by: {user.name} | {user.email}</p>:<p>loading...</p>}
           <Link to="/">
             {" "}
             <button className="btn btn-view">Go back</button>
@@ -95,6 +108,7 @@ function View() {
         </div>
       )}
     </div>
+    
   );
 }
 

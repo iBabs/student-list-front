@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import "./Home.css";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import studentUrl from "./urls";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { AuthContext } from "../context/AuthContext";
 
 const Home = () => {
   const [data, setData] = useState([]);
   const stuuu = `${studentUrl}/students`
   // "https://students-details.vercel.app/students"
+  const {user} = useContext(AuthContext)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,7 +29,14 @@ const Home = () => {
   const deleteUser = async (id) => {
     if (window.confirm("You want to delete user?")) {
       try {
-        const response = await axios.delete(`${studentUrl}/student/${id}`);
+        const response = await axios.delete(`${studentUrl}/student/${id}`,
+          {
+            headers: {
+              authorization: `Bearer ${user.token}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
         if (response.status === 200) {
           toast.success(response.data, { theme: "colored" });
         } else {
